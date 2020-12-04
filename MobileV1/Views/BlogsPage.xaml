@@ -1,12 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MobileV1.ViewModels"  
+             xmlns:local="clr-namespace:MobileV1.ViewModels"  
+             xmlns:model="clr-namespace:MobileV1.Models.Blogs"  
+             Title="Blogs"
              x:Class="MobileV1.Views.BlogsPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms! Blogs"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+
+    <StackLayout Spacing="10">
+        <Label Text="Categories: " FontAttributes="Bold" />
+        <Grid RowDefinitions="40" >
+            <CollectionView ItemsSource="{Binding CategoryItems}" SelectionMode="Single" >
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="5" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="0,0,0,0" CornerRadius="25" >
+                            <Button Text="{Binding Name}" />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+        <Grid ColumnDefinitions="25, *, 25" HeightRequest="25" >
+            <ImageButton Source="previous.png"
+                         HorizontalOptions="Center"
+                         Grid.Column="0" />
+            <Label Text="Page 1 from 11, page Count:20"  
+                   Padding="0,5,0,0"  Grid.Column="1" 
+                   HorizontalTextAlignment="Center" />
+            <ImageButton Source="next.png" 
+                         HorizontalOptions="Center"
+                         VerticalOptions="CenterAndExpand"  
+                         Grid.Column="2" />
+        </Grid>
+    </StackLayout>
 </ContentPage>

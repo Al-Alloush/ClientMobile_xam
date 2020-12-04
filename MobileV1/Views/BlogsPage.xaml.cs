@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MobileV1.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,16 @@ namespace MobileV1.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BlogsPage : ContentPage
     {
+
         public BlogsPage()
         {
+            BindingContext = new BlogsPageViewModel();
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
         }
     }
 }

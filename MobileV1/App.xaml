@@ -25,10 +25,11 @@
             </Style>
             <Style TargetType="Label" >
                 <Setter Property="TextColor" Value="#000066"></Setter>
-                <Setter Property="FontSize" Value="18"></Setter>
+                <Setter Property="FontSize" Value="14"></Setter>
             </Style>
             <Style TargetType="Button">
-                <Setter Property="TextColor" Value="Black"></Setter>
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="FontSize" Value="14"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
