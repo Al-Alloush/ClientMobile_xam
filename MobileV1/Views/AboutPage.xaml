@@ -17,7 +17,8 @@
         <StackLayout BackgroundColor="{StaticResource Primary}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                 <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
+                    <!--<Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />-->
+                    <Label x:Name="AppName" HorizontalOptions="Center" Text="sdfsdf" TextColor="White" FontSize="24" FontAttributes="Bold"/> 
                 </ContentView>
             </StackLayout>
         </StackLayout>
@@ -30,7 +31,7 @@
                         <FormattedString>
                             <FormattedString.Spans>
                                 <Span Text="Learn more at "/>
-                                <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
+                                <Span x:Name="LinkSpan" Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -39,8 +40,6 @@
                         Command="{Binding OpenWebCommand}"
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" />
-
-                <Button Text="dffffffffffff" IsEnabled="False" />
             </StackLayout>
 
         </ScrollView>

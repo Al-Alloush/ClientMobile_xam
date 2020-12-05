@@ -15,6 +15,8 @@ namespace MobileV1.Views
         public AboutPage()
         {
             InitializeComponent();
+            AppName.Text = Configuration.Settings["App:Name"];
+            LinkSpan.Text = Configuration.Settings["Service"];
         }
     }
 }
