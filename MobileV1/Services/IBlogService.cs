@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace MobileV1.Services
 {
-    interface IBlogCategorisService
+    interface IBlogService
     {
         Task<List<CategoriesForBlog>> GetBlogCategories();
     }
