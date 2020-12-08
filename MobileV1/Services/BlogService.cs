@@ -14,7 +14,6 @@ namespace MobileV1.Services
         private readonly string ROOT_URL = Configuration.Settings["API:Server"];
         private readonly string BLOG_CATEGORIES_ENDPOINT_URI = Configuration.Settings["API:EndPointURI:Blogs:CategoriesList"];
         private readonly string BLOGS_ENDPOINT_URI = Configuration.Settings["API:EndPointURI:Blogs:BlogsList"];
-        public string pajecationInformation;
         private readonly HttpClient _client = new HttpClient();
 
         public async Task<List<CategoriesForBlog>> GetBlogCategories()
@@ -34,21 +33,26 @@ namespace MobileV1.Services
             }
         }
 
-        public async Task<Pagination<Blog>> GetAllBlogs()
+        public async Task<Pagination<Blog>> GetAllBlogs(string par = null)
         {
             try
             {
-                var content = await _client.GetAsync(ROOT_URL + BLOGS_ENDPOINT_URI);
+                var content = await _client.GetAsync(ROOT_URL + BLOGS_ENDPOINT_URI+"?"+ par);
                 content.EnsureSuccessStatusCode();
                 string responseBody = await content.Content.ReadAsStringAsync();
                 var pagination = JsonConvert.DeserializeObject<Pagination<Blog>>(responseBody);
+
+                var count = pagination.Data.Count;
+
+                if(count <=0)
+                    return null;
 
                 return pagination;
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("ERROR: " + ex.Message);
-                throw;
+                return null;
             }
         }
     }

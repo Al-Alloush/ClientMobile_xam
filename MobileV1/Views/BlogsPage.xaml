@@ -4,20 +4,22 @@
              xmlns:vm="clr-namespace:MobileV1.ViewModels"  
              xmlns:local="clr-namespace:MobileV1.ViewModels"  
              xmlns:model="clr-namespace:MobileV1.Models.Blogs"  
-             Title="Blogs"
-             x:Class="MobileV1.Views.BlogsPage">
+             x:Name="BlogsPages"
+             x:Class="MobileV1.Views.BlogsPage" >
 
     <StackLayout Spacing="10">
         <Label Text="Categories: " FontAttributes="Bold" />
-        <Grid RowDefinitions="40" >
-            <CollectionView ItemsSource="{Binding CategoryItems}" SelectionMode="Single" >
+        <Grid RowDefinitions="40"  >
+            <CollectionView ItemsSource="{Binding CategoryItems}" SelectionMode="Single" SelectedItem="" >
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Horizontal" ItemSpacing="5" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame Padding="0,0,0,0" CornerRadius="25" >
-                            <Button Text="{Binding Name}" />
+                            <Button Text="{Binding Name}"
+                                    Command="{Binding Source={x:Reference BlogsPages}, Path=BindingContext.CategoryClicked}"
+                                    CommandParameter="{Binding .}" />
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -26,12 +28,14 @@
         <BoxView HeightRequest="1" BackgroundColor="Black" />
         <Grid ColumnDefinitions="25, *, 25" HeightRequest="40" >
             <ImageButton Source="previous.png"
+                         Command="{Binding Source={x:Reference BlogsPages}, Path=BindingContext.PreviousPageClicked}"
                          HorizontalOptions="Center"
                          Grid.Column="0" />
             <Label Text="{Binding PaginationInfo}" 
                    Padding="0,0,0,0"  Grid.Column="1" 
                    HorizontalTextAlignment="Center" />
             <ImageButton Source="next.png" 
+                         Command="{Binding Source={x:Reference BlogsPages}, Path=BindingContext.NextPageClicked}"
                          HorizontalOptions="Center"
                          VerticalOptions="CenterAndExpand"  
                          Grid.Column="2" />
