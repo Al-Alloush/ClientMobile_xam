@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileV1.Views.AccountPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="BoxViewColor">#f7f7f7</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <RelativeLayout>
+            <BoxView BackgroundColor="{StaticResource BoxViewColor}" 
+                     x:Name="banner"
+					 RelativeLayout.HeightConstraint="{ConstraintExpression 
+						Type=RelativeToParent,
+						Property=Height,
+						Factor=0.3}"
+					 RelativeLayout.WidthConstraint="{ConstraintExpression
+						Type=RelativeToParent,
+						Property=Width,
+						Factor=1}" />
+            <!-- Login Or Register -->
+            <StackLayout x:Name="LoginBannerLayout" IsVisible="True"
+                         HorizontalOptions="Center" 
+                         VerticalOptions="Center"
+						 RelativeLayout.WidthConstraint="{ConstraintExpression
+							Type=RelativeToParent,
+							Property=Width,
+							Factor=1}"
+						 RelativeLayout.HeightConstraint="{ConstraintExpression 
+							Type=RelativeToParent,
+							Property=Height,
+							Factor=0.3}">
+                <Button Text="Login" BorderRadius="15" FontSize="18" FontAttributes="Bold" />
+                <Button Text="Register"  BorderRadius="15" FontSize="18" FontAttributes="Bold" />
+            </StackLayout>
+            <!-- END Login Or Register -->
+
+            <!--#region:  After Success Login,  change all layout to Visible-->
+            <!-- UserName and Image in Banner-->
+            <StackLayout x:Name="SuccessLoginBannerLayout"  IsVisible="False"
+                         HorizontalOptions="Center" 
+                         VerticalOptions="Center"
+						 RelativeLayout.WidthConstraint="{ConstraintExpression
+							Type=RelativeToParent,
+							Property=Width,
+							Factor=1}"
+						 RelativeLayout.HeightConstraint="{ConstraintExpression 
+							Type=RelativeToParent,
+							Property=Height,
+							Factor=0.3}">
+                <Label Text="UserName" TextColor="#33353a" FontSize="30" FontAttributes="Bold" />
+                <Frame CornerRadius="100" 
+                        HeightRequest="40"
+                        WidthRequest="40"
+                        HorizontalOptions="Center"
+                        Padding="0"
+                        IsClippedToBounds="True">
+                    <Image Source="person.png" 
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                </Frame>
+            </StackLayout>
+            <!--END UserName and Image in Banner-->
+            <!-- Settings and User Info-->
+            <StackLayout  x:Name="UserAccountLayout" IsVisible="False"
+                          RelativeLayout.WidthConstraint="{ConstraintExpression
+							    Type=RelativeToParent,
+							    Property=Width,
+							    Factor=1}"
+                          RelativeLayout.YConstraint="{ConstraintExpression
+								Type=RelativeToView,
+								ElementName=banner,
+								Property=Height,
+								Factor=1,
+								Constant=30}">
+
+                <Label Text="Why pay for credit?" HorizontalOptions="Center" FontAttributes="Bold" FontSize="15" />
+                <ScrollView>
+                    <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="13">
+                        Because you can reach people who aren't o SkyApp by calling mobile and landline numbers, or spending SMS, at low-cost rates.
+                    </Label>
+                </ScrollView>
+            </StackLayout>
+            <!-- END Settings and User Info-->
+            <!--#endregion: After Success Login-->
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

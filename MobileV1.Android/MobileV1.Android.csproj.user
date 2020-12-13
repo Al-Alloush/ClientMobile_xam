@@ -3,7 +3,7 @@
   <PropertyGroup>
     <SelectedDevice>nexus_4_oreo_8_1_-_api_27</SelectedDevice>
     <DefaultDevice>nexus_4_oreo_8_1_-_api_27</DefaultDevice>
-    <AndroidDesignerPreferredTheme>MainTheme</AndroidDesignerPreferredTheme>
+    <AndroidDesignerPreferredTheme>Theme.AppCompat.Light.NoActionBar</AndroidDesignerPreferredTheme>
     <AndroidDesignerPreferredDevice>Nexus 4</AndroidDesignerPreferredDevice>
     <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
