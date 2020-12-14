@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MobileV1.Models.Identity;
+using MobileV1.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -10,6 +12,13 @@ namespace MobileV1.ViewModels
 {
     class LoginPageViewModel : INotifyPropertyChanged
     {
+        private string _backMessage;
+
+        public string BackMessage
+        {
+            get { return _backMessage; }
+            set { SetProperty(ref _backMessage, value); }
+        }
 
         private string _usernameOrEmail;
         public string UsernameOrEmail
@@ -45,10 +54,32 @@ namespace MobileV1.ViewModels
                 && !String.IsNullOrWhiteSpace(_password);
         }
 
-        private void Login(object obj)
+        readonly UserAccountService accountService = new UserAccountService();
+        private async void Login(object obj)
         {
-            Debug.WriteLine($"Loing ....... {UsernameOrEmail}/{Password} ");
+            var body = new LoginModel
+            {
+                UserNameOrEmail = UsernameOrEmail,
+                Password = Password
+            };
+
+            try
+            {
+                var user = await accountService.Login(body);
+                if (user != null)
+                {
+                    Application.Current.Properties["Token"] = user.Token;
+                    OnCancel(null);
+                }
+                else
+                    BackMessage = "this user not exist or the wrong password";
+            }
+            catch (Exception ex)
+            {
+                BackMessage = ex.Message;
+            }
         }
+
 
         private async void OnCancel(object obj)
         {
