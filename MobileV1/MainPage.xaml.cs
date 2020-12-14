@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MobileV1.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace MobileV1
         public MainPage()
         {
             InitializeComponent();
+            // to get the page uri
+            Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
         }
     }
 }
