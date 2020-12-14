@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MobileV1.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace MobileV1.Views
         public LoginPage()
         {
             InitializeComponent();
+            BindingContext = new LoginPageViewModel();
         }
     }
 }
