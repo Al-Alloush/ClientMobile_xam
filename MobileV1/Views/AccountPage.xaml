@@ -21,7 +21,7 @@
 						Property=Width,
 						Factor=1}" />
             <!-- Login Or Register -->
-            <StackLayout x:Name="LoginBannerLayout" IsVisible="True"
+            <StackLayout IsVisible="{Binding LoginBannerLayout}"
                          HorizontalOptions="Center" 
                          VerticalOptions="Center"
 						 RelativeLayout.WidthConstraint="{ConstraintExpression
@@ -39,8 +39,8 @@
 
             <!--#region:  After Success Login,  change all layout to Visible-->
             <!-- UserName and Image in Banner-->
-            <StackLayout x:Name="SuccessLoginBannerLayout"  IsVisible="False"
-                         HorizontalOptions="Center" 
+            <StackLayout IsVisible="{Binding SuccessLoginLayouts}"
+                         HorizontalOptions="FillAndExpand" 
                          VerticalOptions="Center"
 						 RelativeLayout.WidthConstraint="{ConstraintExpression
 							Type=RelativeToParent,
@@ -50,7 +50,14 @@
 							Type=RelativeToParent,
 							Property=Height,
 							Factor=0.3}">
-                <Label Text="UserName" TextColor="#33353a" FontSize="30" FontAttributes="Bold" />
+                <StackLayout HorizontalOptions="FillAndExpand" >
+                    <Button Text="SingOut" HorizontalOptions="End" 
+                            Padding="0"  Margin="0,0,0,0"  
+                            TextColor="Black" BackgroundColor="{StaticResource BoxViewColor}"  
+                            FontSize="12" WidthRequest="60" HeightRequest="30"  
+                            Command="{Binding SingoutBtnClicked}"/>
+                </StackLayout>
+                <Label Text="{Binding UserName}" TextColor="#33353a" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Center" />
                 <Frame CornerRadius="100" 
                         HeightRequest="40"
                         WidthRequest="40"
@@ -64,7 +71,7 @@
             </StackLayout>
             <!--END UserName and Image in Banner-->
             <!-- Settings and User Info-->
-            <StackLayout  x:Name="UserAccountLayout" IsVisible="False"
+            <StackLayout  IsVisible="{Binding SuccessLoginLayouts}"
                           RelativeLayout.WidthConstraint="{ConstraintExpression
 							    Type=RelativeToParent,
 							    Property=Width,

@@ -7,10 +7,17 @@ namespace MobileV1.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AccountPage : ContentPage
     {
+        
         public AccountPage()
         {
-            BindingContext = new AccountPageViewModel();
             InitializeComponent();
+        }
+
+        protected  override void OnAppearing()
+        {
+            BindingContext = new AccountPageViewModel();
+            
+            base.OnAppearing();
         }
     }
 }

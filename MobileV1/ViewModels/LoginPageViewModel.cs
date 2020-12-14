@@ -33,6 +33,7 @@ namespace MobileV1.ViewModels
             set { SetProperty(ref _password, value); }
         }
 
+
         public Command CancelCommand { get; }
         public Command LoginBtnClicked { get; }
 
@@ -69,6 +70,8 @@ namespace MobileV1.ViewModels
                 if (user != null)
                 {
                     Application.Current.Properties["Token"] = user.Token;
+                    Application.Current.Properties["UserName"] = user.UserName;
+                    await Application.Current.SavePropertiesAsync();
                     OnCancel(null);
                 }
                 else
