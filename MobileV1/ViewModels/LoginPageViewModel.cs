@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace MobileV1.ViewModels
 {
-    class LoginPageViewModel : INotifyPropertyChanged
+    class LoginPageViewModel : BaseViewModel
     {
         private string _backMessage;
 
@@ -89,32 +89,5 @@ namespace MobileV1.ViewModels
             // This will pop the current page off the navigation stack
             await Shell.Current.GoToAsync("..");
         }
-
-
-        #region INotifyPropertyChanged
-        protected bool SetProperty<T>(ref T backingStore, T value,
-            [CallerMemberName] string propertyName = "",
-            Action onChanged = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(backingStore, value))
-                return false;
-
-            backingStore = value;
-            onChanged?.Invoke();
-            OnPropertyChanged(propertyName);
-            return true;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            var changed = PropertyChanged;
-            if (changed == null)
-                return;
-
-            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
-
     }
 }
