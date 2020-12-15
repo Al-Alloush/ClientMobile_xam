@@ -33,7 +33,7 @@
 							Property=Height,
 							Factor=0.3}">
                 <Button Text="Login" BorderRadius="15" FontSize="18" FontAttributes="Bold" Command="{Binding LoginBtnClicked}" />
-                <Button Text="Register"  BorderRadius="15" FontSize="18" FontAttributes="Bold" />
+                <Button Text="Register"  BorderRadius="15" FontSize="18" FontAttributes="Bold"  Command="{Binding RegisterBtnClicked}" />
             </StackLayout>
             <!-- END Login Or Register -->
 

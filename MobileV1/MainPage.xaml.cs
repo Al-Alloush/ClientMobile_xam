@@ -16,6 +16,7 @@ namespace MobileV1
             InitializeComponent();
             // to get the page uri
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
+            Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
         }
     }
 }

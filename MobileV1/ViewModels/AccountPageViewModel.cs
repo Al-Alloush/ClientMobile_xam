@@ -18,6 +18,7 @@ namespace MobileV1.ViewModels
             get { return _username; }
             set { SetProperty(ref _username, value);  }
         }
+        public Command RegisterBtnClicked { get; }
         public Command LoginBtnClicked { get; }
         public Command SingoutBtnClicked { get; }
 
@@ -38,6 +39,7 @@ namespace MobileV1.ViewModels
         {
             SingoutBtnClicked = new Command(Singout);
             LoginBtnClicked = new Command(LoginFun);
+            RegisterBtnClicked = new Command(RegisterFun);
             if (Application.Current.Properties.ContainsKey("UserName"))
                 UserName = Application.Current.Properties["UserName"].ToString();
 
@@ -47,6 +49,8 @@ namespace MobileV1.ViewModels
             LayoutsVisible();
 
         }
+
+
 
         private void LayoutsVisible()
         {
@@ -72,6 +76,11 @@ namespace MobileV1.ViewModels
             Application.Current.Properties["Token"] = null;
             Application.Current.Properties["UsetrName"] = null;
             LayoutsVisible();
+        }
+
+        private async void RegisterFun(object obj)
+        {
+            await Shell.Current.GoToAsync(nameof(RegisterPage));
         }
 
         private async void LoginFun(object obj)

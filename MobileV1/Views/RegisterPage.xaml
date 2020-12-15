@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Shell.PresentationMode="ModalAnimated"
+             x:Class="MobileV1.Views.RegisterPage">
+    <ContentPage.Content>
+        
+        
+        <StackLayout Spacing="3" Padding="15">
+            <Label Text="{Binding BackMessage}" TextColor="Red" FontSize="10" HorizontalTextAlignment="Center" />
+            <ScrollView>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Entry Text="{Binding FirstName, Mode=TwoWay}" Placeholder="First Name" FontSize="Medium" HorizontalOptions="FillAndExpand" />
+                        <Entry Text="{Binding LastName, Mode=TwoWay}" Placeholder="Last Name" FontSize="Medium" HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Entry Text="{Binding Birthday, Mode=TwoWay}" Placeholder="Birthday" FontSize="Medium" HorizontalOptions="FillAndExpand"/>
+                        <Entry Text="{Binding PhoneNumber, Mode=TwoWay}" Placeholder="Phobe Number" FontSize="Medium"  HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    <Entry Text="{Binding UserName, Mode=TwoWay}" Placeholder="Username" FontSize="Medium" Margin="0" />
+                    <Entry Text="{Binding Email, Mode=TwoWay}" Placeholder="Email" FontSize="Medium" Margin="0" />
+                    <Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="Password" IsPassword="True" FontSize="Medium" Margin="0" />
+                    <Entry Text="{Binding ConfirmPassword, Mode=TwoWay}" Placeholder="Confirm Password" IsPassword="True"  FontSize="Medium" Margin="0" />
+                    <StackLayout Orientation="Horizontal">
+                        <Button Text="Cancel"  HorizontalOptions="FillAndExpand" Command="{Binding CancelCommand}"></Button>
+                        <Button Text="Register"  HorizontalOptions="FillAndExpand" Command="{Binding RegisterBtnClicked}" ></Button>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
