@@ -55,7 +55,7 @@ namespace MobileV1.ViewModels
                 && !String.IsNullOrWhiteSpace(_password);
         }
 
-        readonly UserAccountService accountService = new UserAccountService();
+        readonly ConnectionAPIService conn_api = new ConnectionAPIService();
         private async void Login(object obj)
         {
             var body = new LoginModel
@@ -66,7 +66,7 @@ namespace MobileV1.ViewModels
 
             try
             {
-                var user = await accountService.Login(body);
+                var user = await conn_api.Login(body);
                 if (user != null)
                 {
                     Application.Current.Properties["Token"] = user.Token;

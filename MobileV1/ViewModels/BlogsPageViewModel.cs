@@ -37,7 +37,7 @@ namespace MobileV1.ViewModels
             set { SetProperty(ref paginationInfo, value); }
         }
 
-        readonly BlogService blogService = new BlogService();
+        readonly ConnectionAPIService conn_api = new ConnectionAPIService();
 
         BlogSpecParameters pageFilter;
 
@@ -76,7 +76,7 @@ namespace MobileV1.ViewModels
 
         private async void GetCategoryItems()
         {
-            var Categories = await blogService.GetBlogCategories();
+            var Categories = await conn_api.GetBlogCategories();
             CategoryItems.Add(new CategoriesForBlog { Id=0, Name="Reset" });
             foreach (var item in Categories)
             {
@@ -87,7 +87,7 @@ namespace MobileV1.ViewModels
         private async void GetBlogsItems()
         {
             //
-            var Pagination = await blogService.GetAllBlogs(pageFilter.GetParURL());
+            var Pagination = await conn_api.GetAllBlogs(pageFilter.GetParURL());
 
             if (Pagination != null)
             {
